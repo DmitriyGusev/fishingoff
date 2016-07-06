@@ -1,39 +1,33 @@
-%h2 Sign up
+%h2.text-center Регистрация
+
 .form-group
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
-
     .field
-      = f.label :first_name
-      %br
+      %label Пол
+      = f.select :gender, class:"form-control m-b-r"
+    .field
+      %label Имя
       = f.text_field :first_name, class:"form-control m-b-r"
 
       .field
-      = f.label :last_name
-      %br
+        %label Фамилия
       = f.text_field :last_name, class:"form-control m-b-r"
 
     .field
-      = f.label :email
-      %br
+      %label Email
       = f.email_field :email, autofocus: true, class:"form-control m-b-r"
 
     .field
-      = f.label :password
+      %label Пароль
       - if @minimum_password_length
         %em
           (= @minimum_password_length
           characters minimum)
-      %br
       = f.password_field :password, autocomplete: "off", class:"form-control m-b-r"
 
-    .field
-      = f.label :password_confirmation
-      %br
-      = f.password_field :password_confirmation, autocomplete: "off", class:"form-control"
-
     .actions
-      = f.submit "Sign up", class:"btn btn-success m-t-l"
+      = f.submit "Зарегистрироваться", class:"btn btn-success m-t-l"
 
 
   = render "devise/shared/links"
